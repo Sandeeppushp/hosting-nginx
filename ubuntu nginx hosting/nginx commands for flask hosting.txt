@@ -35,7 +35,6 @@ make sure that 443 port is enabled if not then do it in instance security and se
 
 
 
-13.233.209.7
 
 gunicorn -w 2 -k eventlet --timeout 500 --no-sendfile --bind 0.0.0.0:7027 app:app
 
