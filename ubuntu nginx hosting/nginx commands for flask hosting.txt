@@ -1,0 +1,49 @@
+#For PFX File
+
+openssl pkcs12 -in ncom.pfx -nocerts -out keyfile-encrypted.key
+
+openssl pkcs12 -in ncom.pfx -clcerts -nokeys -out certificate.crt
+
+openssl rsa -in keyfile-encrypted.key -out keyfile-decrypted.key
+
+
+
+#For Godaddy
+Generate CSR using ubuntu
+openssl req -new -newkey rsa:2048 -nodes -keyout companyDomain.key -out companyDomain.csr
+insert all the data in lowercase
+
+
+copy the csr data and paste it to the Godaddy
+verify by the client domain
+download the certificate file
+copy the certificate file and the key file to the nginx ssl folder (or make if not present)
+make domain name file in sites-enabled folder
+set both file name in its configuration like this:   /etc/nginx/ssl/mydomain.com.crt
+save and start/restart the nginx
+
+
+
+Notes for AWS
+make sure that 443 port is enabled if not then do it in instance security and set cidr  0.0.0.0/0	
+
+
+
+
+
+
+
+
+
+13.233.209.7
+
+gunicorn -w 2 -k eventlet --timeout 500 --no-sendfile --bind 0.0.0.0:7027 app:app
+
+
+sudo service nginx restart
+
+systemctl status nginx.service
+
+KILL NGINX
+fuser -k 443/tcp
+sudo fuser -k 443/tcp
