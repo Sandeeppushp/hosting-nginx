@@ -4,13 +4,13 @@ upstream site {
 server
 {
 listen 80;
-server_name www.kyc.trustline.in kyc.trustline.in;
+server_name www.domain_name.in domain_name.in;
 return  302 https://$server_name$request_uri;
 }
 
 server {
         listen 443 ssl default_server;
-        server_name www.kyc.trustline.in kyc.trustline.in;
+        server_name www.domain_name.in domain_name.in;
 
         client_max_body_size 10M;
 
