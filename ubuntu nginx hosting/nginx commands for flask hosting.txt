@@ -46,3 +46,22 @@ systemctl status nginx.service
 KILL NGINX
 fuser -k 443/tcp
 sudo fuser -k 443/tcp
+
+
+
+
+
+
+
+
+
+To get Visitor ip address in flask
+
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        return jsonify({'ip': request.environ['REMOTE_ADDR']}), 200
+    else:
+        return jsonify({'ip': request.environ['HTTP_X_FORWARDED_FOR']}), 200
+
+
